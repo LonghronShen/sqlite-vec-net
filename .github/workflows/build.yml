@@ -219,7 +219,7 @@ jobs:
             bash ./utilities/build.sh
 
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: sqlite_vec_${{ matrix.distro }}_${{ matrix.arch }}
           path: build/bin
