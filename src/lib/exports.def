@@ -1,0 +1,3 @@
+LIBRARY SQLITE3_VEC
+EXPORTS
+    core_init
