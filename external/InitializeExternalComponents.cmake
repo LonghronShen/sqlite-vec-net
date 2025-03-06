@@ -47,7 +47,7 @@ endif()
 # sqlite-amalgamation
 set(ENABLE_SHARED OFF CACHE STRING "ENABLE_SHARED" FORCE)
 set(ENABLE_STATIC ON CACHE STRING "ENABLE_STATIC" FORCE)
-set(BUILD_SHELL OFF CACHE STRING "BUILD_SHELL" FORCE)
+set(BUILD_SHELL ON CACHE STRING "BUILD_SHELL" FORCE)
 set(ENABLE_STATIC_SHELL ON CACHE STRING "ENABLE_STATIC_SHELL" FORCE)
 set(ENABLE_STATIC ON CACHE STRING "ENABLE_STATIC" FORCE)
 
@@ -59,7 +59,7 @@ FetchContent_GetProperties(sqlite_amalgamation)
 
 if(NOT sqlite_amalgamation_POPULATED)
   FetchContent_Populate(sqlite_amalgamation)
-  add_subdirectory(${sqlite_amalgamation_SOURCE_DIR} ${sqlite_amalgamation_BINARY_DIR} EXCLUDE_FROM_ALL)
+  add_subdirectory(${sqlite_amalgamation_SOURCE_DIR} ${sqlite_amalgamation_BINARY_DIR})
   add_library(SQLite::SQLite3 ALIAS sqlite3-static)
 endif()
 

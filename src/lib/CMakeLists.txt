@@ -55,14 +55,6 @@ function(add_lib_internal)
             # WINDOWS_EXPORT_ALL_SYMBOLS ON
             POSITION_INDEPENDENT_CODE ON
         )
-
-        # target_compile_definitions(${internal_lib_name}
-        #     PRIVATE LLAMA_WRAPPER_SHARED
-        #     PRIVATE LLAMA_WRAPPER_BUILD
-        #     PRIVATE LLAMA_SHARED
-        #     PRIVATE LLAMA_BUILD
-        #     PRIVATE GGML_SHARED
-        #     PRIVATE GGML_BUILD)
     endif()
 
     if(output_lib_name)
@@ -95,4 +87,4 @@ add_lib_internal(TYPE STATIC ALIAS sqlite_vec::sqlite_vec_ex)
 
 make_runtime_native_nupkg(sqlite-vec-cpp-shared-lib
     "${SQLITE_VEC_NUGET_PACKAGE_NAMESPACE}"
-    "runtime.native.sqlite_vec.${CMAKE_CXX_COMPILER_ID}")
+    "runtime.native.${CMAKE_CXX_COMPILER_ID}")

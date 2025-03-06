@@ -16,10 +16,7 @@ set(project_name sqlite-vec-cpp)
 
 project(${project_name} C CXX)
 
-option(LLAMA_CPP_WRAPPER_USE_OPENBLAS "Build with OpenBlas" OFF)
-option(LLAMA_CPP_WRAPPER_USE_AVX512 "Build with AVX512" OFF)
-
-set(LLAMA_CPP_WRAPPER_NUGET_PACKAGE_NAMESPACE "llama_cpp" CACHE STRING "LLAMA_CPP_WRAPPER_NUGET_PACKAGE_NAMESPACE" FORCE)
+set(SQLITE_VEC_NUGET_PACKAGE_NAMESPACE "sprintor.sqlite3_vec" CACHE STRING "SQLITE_VEC_NUGET_PACKAGE_NAMESPACE" FORCE)
 
 set(CMAKE_CXX_STANDARD 17 CACHE STRING "Set to 11 or 14 to enable C++11 or C++17 builds, respectively." FORCE)
 set(CMAKE_C_STANDARD 11 CACHE STRING "Set to 99 or 11 to enable C99 or C11 builds, respectively." FORCE)
