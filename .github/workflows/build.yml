@@ -261,7 +261,7 @@ jobs:
           ./utilities/build.sh
 
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: sqlite_vec_darwin64
           path: build/bin
@@ -331,7 +331,7 @@ jobs:
           ./utilities/build.sh
 
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: sqlite_vec_${{ matrix.env }}_${{ matrix.name }}
           path: build/bin
@@ -421,7 +421,7 @@ jobs:
           cmake --build --preset ninja-multi-vcpkg-release
 
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: sqlite_vec_${{ matrix.name }}
           path: builds/ninja-multi-vcpkg/bin/
