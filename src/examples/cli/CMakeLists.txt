@@ -7,7 +7,7 @@ file(GLOB_RECURSE SRC
     ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
 
 target_sources(sqlite3 PRIVATE ${SRC})
-target_link_libraries(sqlite3 sqlite_vec_static)
+target_link_libraries(sqlite3 sqlite3-static sqlite_vec_static)
 
 add_executable(${project_name}-exe ALIAS sqlite3)
 

@@ -47,7 +47,7 @@ function(add_lib_internal TARGET)
         target_compile_options(${TARGET} PRIVATE -O3 -fPIC)
     endif()
 
-    target_link_libraries(${TARGET} PUBLIC SQLite::SQLite3)
+    target_link_libraries(${TARGET} PUBLIC sqlite3-static)
     target_include_directories(${TARGET}
         PUBLIC ${CMAKE_CURRENT_LIST_DIR}/
         PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/)

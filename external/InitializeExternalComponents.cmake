@@ -8,6 +8,9 @@ set(FETCHCONTENT_UPDATES_DISCONNECTED ON CACHE STRING "FETCHCONTENT_UPDATES_DISC
 
 include(FetchContent)
 
+macro(install)
+endmacro()
+
 # cmrc
 FetchContent_Declare(cmrc
   GIT_REPOSITORY https://github.com/vector-of-bool/cmrc.git
@@ -49,7 +52,7 @@ set(ENABLE_SHARED OFF CACHE STRING "ENABLE_SHARED" FORCE)
 set(ENABLE_STATIC ON CACHE STRING "ENABLE_STATIC" FORCE)
 set(BUILD_SHELL ON CACHE STRING "BUILD_SHELL" FORCE)
 set(ENABLE_STATIC_SHELL ON CACHE STRING "ENABLE_STATIC_SHELL" FORCE)
-set(ENABLE_STATIC ON CACHE STRING "ENABLE_STATIC" FORCE)
+set(BUILD_WITH_XPSDK ON CACHE STRING "BUILD_WITH_XPSDK" FORCE)
 
 FetchContent_Declare(sqlite_amalgamation
   GIT_REPOSITORY https://github.com/rhuijben/sqlite-amalgamation.git
@@ -60,6 +63,19 @@ FetchContent_GetProperties(sqlite_amalgamation)
 if(NOT sqlite_amalgamation_POPULATED)
   FetchContent_Populate(sqlite_amalgamation)
   add_subdirectory(${sqlite_amalgamation_SOURCE_DIR} ${sqlite_amalgamation_BINARY_DIR})
+
+  if(WIN32)
+    target_compile_definitions(sqlite3-static 
+      PUBLIC SQLITE_OS_WIN
+      PUBLIC SQLITE_OS_WINNT)
+    # target_compile_definitions(sqlite3-shared 
+    #   PUBLIC SQLITE_OS_WIN
+    #   PUBLIC SQLITE_OS_WINNT)
+  endif()
+
+  target_include_directories(sqlite3-static BEFORE INTERFACE ${sqlite_amalgamation_SOURCE_DIR}/)
+  # target_include_directories(sqlite3-shared BEFORE INTERFACE ${sqlite_amalgamation_SOURCE_DIR}/)
+
   add_library(SQLite::SQLite3 ALIAS sqlite3-static)
 endif()
 
