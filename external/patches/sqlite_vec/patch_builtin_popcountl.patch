@@ -1,0 +1,18 @@
+diff --git a/sqlite-vec.c b/sqlite-vec.c
+index 3cc802f..a3ebcd1 100644
+--- a/sqlite-vec.c
++++ b/sqlite-vec.c
+@@ -533,9 +533,13 @@ static unsigned int __builtin_popcountl(unsigned int x) {
+ }
+ #else
+ #include <intrin.h>
++#if defined(_M_IX86)
++#define __builtin_popcountl __popcnt
++#else
+ #define __builtin_popcountl __popcnt64
+ #endif
+ #endif
++#endif
+ 
+ static f32 distance_hamming_u64(u64 *a, u64 *b, size_t n) {
+   int same = 0;
