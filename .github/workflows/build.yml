@@ -451,7 +451,21 @@ jobs:
 
       - name: Install nuget
         run: |
-          sudo apt update && sudo apt-get install -y nuget
+          sudo apt update
+          sudo apt-get install -y mono-complete wget gettext
+
+          sudo mkdir -p /usr/lib/nuget
+          sudo wget -O /usr/lib/nuget/NuGet.exe https://dist.nuget.org/win-x86-commandline/v6.5.0/nuget.exe
+
+          sudo cat <<EOF > /usr/bin/nuget
+          #!/bin/bash
+
+          set -x
+
+          exec mono /usr/lib/nuget/NuGet.exe "\$@"
+          EOF
+
+          sudo chmod +x /usr/bin/nuget
 
       - name: Build meta package
         run: |
