@@ -57,3 +57,7 @@ models
 models/
 prompts
 prompts/
+
+.venv/
+__pycache__/
+.pytest_cache/
