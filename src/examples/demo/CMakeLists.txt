@@ -9,8 +9,14 @@ file(GLOB_RECURSE SRC
 add_executable(${project_name}-demo ${SRC})
 target_link_libraries(${project_name}-demo sqlite3-static sqlite_vec_static ${CMAKE_THREAD_LIBS_INIT})
 
-if(NEED_LINKING_AGAINST_LIBM)
-    target_link_libraries(${project_name}-demo m)
+if(UNIX)
+    if(DL_FOUND)
+        target_link_libraries(${project_name}-demo DL::DL)
+    endif()
+
+    if(NEED_LINKING_AGAINST_LIBM)
+        target_link_libraries(${project_name}-demo m)
+    endif()
 endif()
 
 if(MINGW)
