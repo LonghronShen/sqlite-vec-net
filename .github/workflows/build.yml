@@ -457,7 +457,7 @@ jobs:
           sudo mkdir -p /usr/lib/nuget
           sudo wget -O /usr/lib/nuget/NuGet.exe https://dist.nuget.org/win-x86-commandline/v6.5.0/nuget.exe
 
-          sudo cat <<EOF > /usr/bin/nuget
+          cat <<EOF > /tmp/nuget
           #!/bin/bash
 
           set -x
@@ -465,6 +465,7 @@ jobs:
           exec mono /usr/lib/nuget/NuGet.exe "\$@"
           EOF
 
+          sudo mv /tmp/nuget /usr/bin/nuget
           sudo chmod +x /usr/bin/nuget
 
       - name: Build meta package
