@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Sprintor.Sqlite3_Vec</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pgvector.EntityFrameworkCore" Version="0.2.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(RuntimeIdentifier)' == 'win-x64' ">
+    <PackageReference Include="sprintor.sqlite3_vec.runtime.win-x64.runtime.native.MSVC" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(RuntimeIdentifier)' == 'linux-x64' ">
+    <PackageReference Include="sprintor.sqlite_vec.runtime.ubuntu.20.04-x64.runtime.native.GNU" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(RuntimeIdentifier)' == 'linux-arm64' ">
+    <PackageReference Include="sprintor.sqlite_vec.runtime.ubuntu.20.04-arm64.runtime.native.GNU" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(RuntimeIdentifier)' == 'linux-x86' ">
+    <PackageReference Include="sprintor.sqlite_vec.runtime.ubuntu.18.04-x86.runtime.native.GNU" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(RuntimeIdentifier)' == 'osx-x64' ">
+    <PackageReference Include="sprintor.sqlite_vec.runtime.osx.12.6.5-x64.runtime.native.AppleClang" Version="1.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <RestoreSources>$(RestoreSources);../../build/bin;https://api.nuget.org/v3/index.json</RestoreSources>
+  </PropertyGroup>
+
+</Project>
